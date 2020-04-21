@@ -3,15 +3,19 @@ import Enzyme, {shallow} from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
 
 import Congrats from './Congrats'
-import { findByTestAttr} from '../test/testUtils'
+import { findByTestAttr, checkProps} from '../test/testUtils'
 
 Enzyme.configure({ adapter: new EnzymeAdapter()});
+
+const defaultProps = { success:false};
 
 // helper function to render component
 // using the spread operator "..." to split props into its 
 // separate parts
 const setup = (props={}) => {
-    const wrapper =  shallow(<Congrats {...props} />)
+    // use default props and then overwrite with supplied props
+     const setupProps = {...defaultProps, ... props };
+    const wrapper =  shallow(<Congrats {...setupProps} />)
     return wrapper;
   }
 
@@ -34,3 +38,8 @@ test('renders non empty congrats when success prop is true', () => {
     expect(message.text()).not.toBe('');
     expect(message.length).not.toBe(0);
 });
+
+test('does not throw warning with expected props', () => {
+  const expectedProps = { success: false};
+  checkProps(Congrats, expectedProps)
+})
