@@ -45,5 +45,36 @@ const setup = (props={}) => {
   });
 
   describe ('if there are words guessed', () => {
+      const guessedWords = [
+        { guessedWord: 'train', letterMatchCount: 3 },
+        { guessedWord: 'agile', letterMatchCount: 1 },
+        { guessedWord: 'party', letterMatchCount: 5 },
+
+      ];
+
+      let wrapper
+
+      // function run before every test
+      beforeEach( () => {
+          wrapper = setup( { guessedWords});
+      });
+
+    test('renders without error', () => {
+        const attr = findByTestAttr(wrapper, 'component-guessed-words');
+        expect(attr.length).toBe(1);
+    });
+
+    test('renders guessed words section',  () => {
+        const words = findByTestAttr(wrapper,'guessed-words')
+        expect(words.length).toBe(1);
+    }
+    );
+
+    test ('renders correct number of guessed words', () => {
+        const words = findByTestAttr(wrapper,'guessed-word')
+        expect(words.length).toBe(guessedWords.length);
+    });
+
+
       
 });
