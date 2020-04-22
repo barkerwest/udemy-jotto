@@ -7,4 +7,4 @@ import rootReducer from './reducers';
 
 //export default createStoreWithMiddleware(rootReducer);
 
-export default createStore(rootReducer)
+export default createStore(rootReducer);
