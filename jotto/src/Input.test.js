@@ -18,7 +18,7 @@ const setup = (initialState={}) => {
     // the actual component
     const wrapper =  shallow(<Input store={store} />).dive().dive();
     // just to see the effects of dive
-    // console.log(wrapper.debug());
+    //console.log(wrapper.debug());
     return wrapper;
   }
 
@@ -76,7 +76,19 @@ describe ('render', () => {
     })
 });
 
-describe ('update state', () => {
+describe ('redux props', () => {
+    test('has success piece of state as props', () => {
+        const success = true;
+        const wrapper = setup({success});
+        const successProp = wrapper.instance().props.success;
+        expect(successProp).toBe(success);
+    })
+
+    test('has guessWord actionCreator available as function props', () => {
+        const wrapper = setup();
+        const guessWordProp = wrapper.instance().props.guessWord;
+        expect(guessWordProp).toBeInstanceOf(Function);
+    })
 
 });
 
