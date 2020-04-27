@@ -21,6 +21,7 @@ export class UnconnectedInput extends Component {
 
         if ( guessedWord && guessedWord.length > 0){
           this.props.guessWord(guessedWord);
+          this.setState({currentGuess: ''})
         }
     }
 
@@ -28,7 +29,7 @@ export class UnconnectedInput extends Component {
         const contents = this.props.success
         ? null
         : (
-                <form classname="form-inline">
+                <form className="form-inline">
                     <input
                         data-test="input-box"
                         className="mb-2 xm-sm-3"
