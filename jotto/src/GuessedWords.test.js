@@ -76,5 +76,29 @@ const setup = (props={}) => {
     });
 
 
+    test('first index is correct', () => {
+      const indexes = findByTestAttr(wrapper,'guessed-word-index')
+      const items = indexes.map((item) => {return(item);});
+      expect(items[0].text()).toBe('1');
+    });
+
+
+    test('last index is correct', () => {
+      const indexes = findByTestAttr(wrapper,'guessed-word-index')
+      const items = indexes.map((item) => {return(item);});
+      expect(items[2].text()).toBe('3');
+    });
+
+
+    test('all indexes present', () => {
+      const indexes = findByTestAttr(wrapper,'guessed-word-index')
+      const actualSet = new Set(indexes.map((wrapper) => {return(wrapper.text());}));
+      const expectedSet = new Set(guessedWords.map((item,index) => {return((index + 1).toString());}));
+      expect(actualSet).toEqual(expectedSet);
+
+     
+    });
+
+
       
 });
