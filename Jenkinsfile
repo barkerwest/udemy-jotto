@@ -9,6 +9,7 @@ pipeline {
     stage ('Stage 2') {
       steps {
           echo 'test npm!'
+          echo 'test npm!'
       }
     }
   }
