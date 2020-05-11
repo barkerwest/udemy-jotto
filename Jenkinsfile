@@ -8,10 +8,10 @@ pipeline {
     }
     stage ('Stage 2') {
       steps {
-          echo 'test npm!'
+          echo 'install npm packages'
           sh '''
               cd jotto
-              pwd
+              npm install
               cd ..
               pwd
           '''
