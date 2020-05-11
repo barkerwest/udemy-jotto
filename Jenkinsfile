@@ -6,11 +6,9 @@ pipeline {
           echo 'Hello World!'
       }
     }
-    stage ('Install npm packages') {
+    stage ('Stage 2') {
       steps {
-          cd jotto
-          npm list
-          cd ..
+          echo 'test npm!'
       }
     }
   }
