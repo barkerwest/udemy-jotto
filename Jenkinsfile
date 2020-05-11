@@ -9,7 +9,10 @@ pipeline {
     stage ('Stage 2') {
       steps {
           echo 'test npm!'
-          echo 'test npm!'
+          sh 'cd jotto'
+          sh 'npm install'
+          sh 'cd ..'
+          sh 'pwd'
       }
     }
   }
